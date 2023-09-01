@@ -1,0 +1,11 @@
+var fs = require('fs');
+var data = fs.readFileSync('/dev/stdin').toString().split('\n');
+const a = data[0];
+const b = data[1];
+let a_1 = b[2];
+let a_2 = b[1];
+let a_3 = b[0];
+console.log(parseInt(a * a_1));
+console.log(parseInt(a * a_2));
+console.log(parseInt(a * a_3));
+console.log(parseInt(a * b));
