@@ -1,19 +1,17 @@
 var fs = require("fs");
 var input = fs.readFileSync("./dev/stdin").toString().split("\n");
-var data = input[0].split(" ");
 
-let A1 = parseInt(data[0]);
-let A2 = parseInt(data[1]);
-let A3 = parseInt(data[2]);
+let n = Number(input[0].split(" ")[0]);
+let k = input[1].split(" ").map(Number);
 
-if (A1 === A2 && A1 === A3) {
-  console.log(10000 + A1 * 1000);
-} else if (A1 === A2) {
-  console.log(1000 + A1 * 100);
-} else if (A1 === A3) {
-  console.log(1000 + A1 * 100);
-} else if (A2 === A3) {
-  console.log(1000 + A2 * 100);
-} else {
-  console.log(Math.max(A1, A2, A3) * 100);
+let arr = k.sort((a, b) => a - b);
+
+for (let i = 1; i < arr.length; i++) {
+  arr[i] = arr[i] + arr[i - 1];
 }
+
+let conut = 0;
+for (let i = 0; i < arr.length; i++) {
+  conut += arr[i];
+}
+console.log(conut);
