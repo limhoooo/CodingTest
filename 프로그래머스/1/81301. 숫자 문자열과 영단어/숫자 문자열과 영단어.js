@@ -5,11 +5,9 @@ function solution(s) {
     ]
     
     for(let i=0; i<numberArr.length; i++){
-        for(let j=0; j<5; j++){            
-        if(s.indexOf(numberArr[i]) !== -1){
-           s = s.replace(numberArr[i], i)
-        }
-        }
+            if(s.indexOf(numberArr[i]) !== -1){
+               s = s.replaceAll(numberArr[i], i)
+            }
             
     }
     
