@@ -1,28 +1,28 @@
-var input = require("fs").readFileSync(0).toString().split("\n");
+const input = require("fs").readFileSync("./dev/stdin").toString().split("\n");
 
-let [n, x] = input[0].split(" ");
-let arr = input[1].split(" ");
+const [N, K] = input[0].split(" ");
+const arr = input[1].split(" ").map(Number);
 
-let sum = 0;
 let end = 0;
-let sumArr = [];
+let sum = 0;
+let result = [];
 
-for (let start = 0; start < arr.length; start++) {
-  while (end - start < x) {
-    sum += Number(arr[end]);
+for (let start = 0; start < N; start++) {
+  while (end - start < K) {
+    sum += arr[end];
     end++;
   }
-  sumArr.push(sum);
-  sum -= Number(arr[start]);
+  result.push(sum);
+  sum -= arr[start];
 }
-let sumArr2 = sumArr.filter((item) => !isNaN(item));
 
-const maxNumber = Math.max(...sumArr2);
-const countMaxNumber = sumArr2.filter((num) => num === maxNumber).length;
+result = result.filter((item) => !isNaN(item));
+const maxResult = Math.max(...result);
+const resultLength = result.filter((item) => item === maxResult).length;
 
-if (maxNumber !== 0) {
-  console.log(maxNumber);
-  console.log(countMaxNumber);
-} else {
+if (maxResult === 0) {
   console.log("SAD");
+} else {
+  console.log(maxResult);
+  console.log(resultLength);
 }
